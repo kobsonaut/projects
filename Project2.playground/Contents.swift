@@ -1,24 +1,27 @@
 import UIKit
 
-private var hasImage = false
-
-class Lion: CustomStringConvertible {
+class Animal: CustomStringConvertible {
+    let type: Type
     let name: String
     let breed: String
     let age: Int
     let weight: Float
     let image: UIImage?
     
-    init (name: String, breed: String, age: Int, weight: Float){
+    init (type: Type, name: String, breed: String, age: Int, weight: Float, image: UIImage?){
+        self.type = type
         self.name = name
         self.breed = breed
         self.age = age
         self.weight = weight
-        self.image = nil
+        self.image = image
+        
     }
     
     var description: String {
+        var hasImage = false
         var description = ""
+        description += "typ: \(self.type) - "
         description += "imię: \(self.name) - "
         description += "rasa: \(self.breed) - "
         description += "wiek: \(self.age) - "
@@ -38,17 +41,17 @@ class Lion: CustomStringConvertible {
 
 extension Float {
     func convertToKg() -> Float {
-        var kg: Float { return self * 0.45359 }
-        return kg
+        return self * 0.45359
     }
 }
 
+enum Type: String {
+    case lion = "Lion"
+    case tiger = "Tiger"
+    case bear = "Bear"
+}
 
-let firstLion = Lion(name: "Marian", breed: "Afrykański", age: 5, weight: 220)
-let secondLion = Lion(name: "Leo", breed: "Azjatycki", age: 4, weight: 200)
-
-let weightOfFirstLionInKg = firstLion.weight.convertToKg()
-let weightOfSecondLionInKg = secondLion.weight.convertToKg()
-
+let leo = Animal(type: Type.lion, name: "Leo", breed: "African", age: 6, weight: 220, image: nil)
+let weightOfFirstLionInKg = leo.weight.convertToKg()
 
 
