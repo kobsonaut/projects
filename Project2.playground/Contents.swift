@@ -18,8 +18,11 @@ class Animal: CustomStringConvertible {
         
     }
     
+    var imageCheck : Bool {
+        return image != nil
+    }
+    
     var description: String {
-        var hasImage = false
         var description = ""
         description += "typ: \(self.type) - "
         description += "imię: \(self.name) - "
@@ -27,11 +30,9 @@ class Animal: CustomStringConvertible {
         description += "wiek: \(self.age) - "
         description += "waga: \(self.weight) - "
         if self.image != nil {
-            hasImage = true
-            description += "Posiada zdjęcie: \(hasImage)"
+            description += "Posiada zdjęcie: \(imageCheck)"
         } else {
-            hasImage = false
-            description += "Posiada zdjęcie: \(hasImage)"
+            description += "Posiada zdjęcie: \(imageCheck)"
         }
         
         return description
@@ -54,9 +55,7 @@ enum Type: String {
 let leo = Animal(type: Type.lion, name: "Leo", breed: "African", age: 6, weight: 220, image: nil)
 let weightOfFirstLionInKg = leo.weight.convertToKg()
 
-var imageCheck : Bool {
-    return leo.image != nil
-}
+
 
 
 
