@@ -54,4 +54,9 @@ enum Type: String {
 let leo = Animal(type: Type.lion, name: "Leo", breed: "African", age: 6, weight: 220, image: nil)
 let weightOfFirstLionInKg = leo.weight.convertToKg()
 
+var imageCheck : Bool {
+    return leo.image != nil
+}
+
+
 
